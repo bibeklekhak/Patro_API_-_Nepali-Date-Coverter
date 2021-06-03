@@ -105,155 +105,25 @@ class NepaliCalendar
 
 	public $debug_info = "";
 
-	/**
-	 * Return day
-	 *
-	 * @param int $day
-	 * @return string
-	 */
-	private function _get_day_of_week($day)
+	// TODO: change visibility (to private or something else) later as per requirement
+	public function _get_day_of_week(int $dayNumber): string
 	{
-		switch ($day) {
-			case 1:
-				$day = "Sunday";
-				break;
-
-			case 2:
-				$day = "Monday";
-				break;
-
-			case 3:
-				$day = "Tuesday";
-				break;
-
-			case 4:
-				$day = "Wednesday";
-				break;
-
-			case 5:
-				$day = "Thursday";
-				break;
-
-			case 6:
-				$day = "Friday";
-				break;
-
-			case 7:
-				$day = "Saturday";
-				break;
-		}
-		return $day;
+		$daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+		return $daysOfTheWeek[ $dayNumber - 1 ];
 	}
-
-	/**
-	 * Return english month name
-	 *
-	 * @param int $m
-	 * @return string
-	 */
-	private function _get_english_month($m)
+	
+	// TODO: change visibility (to private or something else) later as per requirement
+	public function _get_english_month(int $monthNumber): string
 	{
-		$eMonth = FALSE;
-		switch ($m) {
-			case 1:
-				$eMonth = "January";
-				break;
-			case 2:
-				$eMonth = "February";
-				break;
-			case 3:
-				$eMonth = "March";
-				break;
-			case 4:
-				$eMonth = "April";
-				break;
-			case 5:
-				$eMonth = "May";
-				break;
-			case 6:
-				$eMonth = "June";
-				break;
-			case 7:
-				$eMonth = "July";
-				break;
-			case 8:
-				$eMonth = "August";
-				break;
-			case 9:
-				$eMonth = "September";
-				break;
-			case 10:
-				$eMonth = "October";
-				break;
-			case 11:
-				$eMonth = "November";
-				break;
-			case 12:
-				$eMonth = "December";
-		}
-		return $eMonth;
+		$englishMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		return $englishMonthNames[ $monthNumber - 1 ];
 	}
-
-	/**
-	 * Return nepali month name
-	 *
-	 * @param int $m
-	 * @return string
-	 */
-	private function _get_nepali_month($m)
+	
+	// TODO: change visibility (to private or something else) later as per requirement
+	public function _get_nepali_month(int $monthNumber): string
 	{
-		$n_month = FALSE;
-
-		switch ($m) {
-			case 1:
-				$n_month = "Baishak";
-				break;
-
-			case 2:
-				$n_month = "Jestha";
-				break;
-
-			case 3:
-				$n_month = "Ashad";
-				break;
-
-			case 4:
-				$n_month = "Shrawn";
-				break;
-
-			case 5:
-				$n_month = "Bhadra";
-				break;
-
-			case 6:
-				$n_month = "Ashwin";
-				break;
-
-			case 7:
-				$n_month = "kartik";
-				break;
-
-			case 8:
-				$n_month = "Mangshir";
-				break;
-
-			case 9:
-				$n_month = "Poush";
-				break;
-
-			case 10:
-				$n_month = "Magh";
-				break;
-
-			case 11:
-				$n_month = "Falgun";
-				break;
-
-			case 12:
-				$n_month = "Chaitra";
-				break;
-		}
-		return $n_month;
+		$nepaliMonthNames = ['Baishak','Jestha','Ashad','Shrawn','Bhadra','Ashwin','kartik','Mangshir','Poush','Magh','Falgun','Chaitra'];
+		return $nepaliMonthNames[ $monthNumber - 1 ];
 	}
 
 	/**
@@ -306,28 +176,12 @@ class NepaliCalendar
 		return TRUE;
 	}
 
-	/**
-	 * Calculates wheather english year is leap year or not
-	 *
-	 * @param int $year
-	 * @return bool
-	 */
-	public function is_leap_year($year)
+	public function is_leap_year(int $year): bool
 	{
-		$a = $year;
-		if ($a % 100 == 0) {
-			if ($a % 400 == 0) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		} else {
-			if ($a % 4 == 0) {
-				return TRUE;
-			} else {
-				return FALSE;
-			}
-		}
+		if ($year % 4 !== 0) return false;
+		elseif ($year % 100 !== 0) return true;
+		elseif ($year % 400 !== 0) return false;
+		else return true;
 	}
 
 	/**
