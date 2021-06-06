@@ -106,21 +106,21 @@ class NepaliCalendar
 	public $debug_info = "";
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_day_of_week(int $dayNumber): string
+	private function _get_day_of_week(int $dayNumber): string
 	{
 		$daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		return $daysOfTheWeek[$dayNumber - 1];
 	}
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_english_month(int $monthNumber): string
+	private function _get_english_month(int $monthNumber): string
 	{
 		$englishMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		return $englishMonthNames[$monthNumber - 1];
 	}
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_nepali_month(int $monthNumber): string
+	private function _get_nepali_month(int $monthNumber): string
 	{
 		$nepaliMonthNames = ['Baishak', 'Jestha', 'Ashad', 'Shrawn', 'Bhadra', 'Ashwin', 'kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra'];
 		return $nepaliMonthNames[$monthNumber - 1];
@@ -176,7 +176,7 @@ class NepaliCalendar
 		return TRUE;
 	}
 
-	public function is_leap_year(int $year): bool
+	private function is_leap_year(int $year): bool
 	{
 		if ($year % 4 !== 0) return false;
 		elseif ($year % 100 !== 0) return true;
@@ -310,8 +310,6 @@ class NepaliCalendar
 		$def_emm     = 4;
 		$def_edd     = 14 - 1;	// initial english date.
 		$def_nyy     = 2000;
-		$def_nmm     = 1;
-		$def_ndd     = 1;		// iniital equivalent nepali date.
 		$total_eDays = 0;
 		$total_nDays = 0;
 		$a           = 0;
@@ -322,36 +320,8 @@ class NepaliCalendar
 		$k           = 0;
 		$numDay      = 0;
 
-		$month  = [
-			0,
-			31,
-			28,
-			31,
-			30,
-			31,
-			30,
-			31,
-			31,
-			30,
-			31,
-			30,
-			31
-		];
-		$lmonth = [
-			0,
-			31,
-			29,
-			31,
-			30,
-			31,
-			30,
-			31,
-			31,
-			30,
-			31,
-			30,
-			31
-		];
+		$month  = [0,31,28,31,30,31,30,31,31,30,31,30,31];
+		$lmonth = [0,31,29,31,30,31,30,31,31,30,31,30,31];
 
 		// Check for date range
 		$chk = $this->_is_in_range_nep($yy, $mm, $dd);
@@ -411,7 +381,7 @@ class NepaliCalendar
 			$this->_eng_date['month']   = $m;
 			$this->_eng_date['date']    = $total_eDays;
 			$this->_eng_date['day']     = $this->_get_day_of_week($day);
-			$this->_eng_date['nmonth']  = $this->_get_english_month($m);
+			$this->_eng_date['emonth']  = $this->_get_english_month($m);
 			$this->_eng_date['num_day'] = $numDay;
 
 			return $this->_eng_date;
