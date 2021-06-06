@@ -106,21 +106,21 @@ class NepaliCalendar
 	public $debug_info = "";
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_day_of_week(int $dayNumber): string
+	private function _get_day_of_week(int $dayNumber): string
 	{
 		$daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		return $daysOfTheWeek[$dayNumber - 1];
 	}
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_english_month(int $monthNumber): string
+	private function _get_english_month(int $monthNumber): string
 	{
 		$englishMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		return $englishMonthNames[$monthNumber - 1];
 	}
 
 	// TODO: change visibility (to private or something else) later as per requirement
-	public function _get_nepali_month(int $monthNumber): string
+	private function _get_nepali_month(int $monthNumber): string
 	{
 		$nepaliMonthNames = ['Baishak', 'Jestha', 'Ashad', 'Shrawn', 'Bhadra', 'Ashwin', 'kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra'];
 		return $nepaliMonthNames[$monthNumber - 1];
@@ -176,7 +176,7 @@ class NepaliCalendar
 		return TRUE;
 	}
 
-	public function is_leap_year(int $year): bool
+	private function is_leap_year(int $year): bool
 	{
 		if ($year % 4 !== 0) return false;
 		elseif ($year % 100 !== 0) return true;
