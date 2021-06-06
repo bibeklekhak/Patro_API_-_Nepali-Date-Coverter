@@ -381,7 +381,7 @@ class NepaliCalendar
 			$this->_eng_date['month']   = $m;
 			$this->_eng_date['date']    = $total_eDays;
 			$this->_eng_date['day']     = $this->_get_day_of_week($day);
-			$this->_eng_date['nmonth']  = $this->_get_english_month($m);
+			$this->_eng_date['emonth']  = $this->_get_english_month($m);
 			$this->_eng_date['num_day'] = $numDay;
 
 			return $this->_eng_date;
