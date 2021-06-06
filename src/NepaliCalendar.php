@@ -310,8 +310,6 @@ class NepaliCalendar
 		$def_emm     = 4;
 		$def_edd     = 14 - 1;	// initial english date.
 		$def_nyy     = 2000;
-		$def_nmm     = 1;
-		$def_ndd     = 1;		// iniital equivalent nepali date.
 		$total_eDays = 0;
 		$total_nDays = 0;
 		$a           = 0;
