@@ -29,6 +29,14 @@ class PatroAPITest extends TestCase
         );
     }
 
+    public function testLeapYearDateConversion(): void
+    {
+        $this->assertSame(
+            $this->Cal->eng_to_nep(2020,02,29), 
+            ['year' => 2076, 'month' => 11, 'date' => 17, 'day' => 'Saturday', 'nmonth' => 'Falgun', 'num_day' => 7]
+        );
+    }
+    
     protected function tearDown(): void
     {
         $this->Cal = null;
