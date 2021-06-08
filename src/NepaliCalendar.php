@@ -105,36 +105,25 @@ class NepaliCalendar
 
 	public $debug_info = "";
 
-	// TODO: change visibility (to private or something else) later as per requirement
 	private function _get_day_of_week(int $dayNumber): string
 	{
 		$daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 		return $daysOfTheWeek[$dayNumber - 1];
 	}
 
-	// TODO: change visibility (to private or something else) later as per requirement
 	private function _get_english_month(int $monthNumber): string
 	{
 		$englishMonthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		return $englishMonthNames[$monthNumber - 1];
 	}
 
-	// TODO: change visibility (to private or something else) later as per requirement
 	private function _get_nepali_month(int $monthNumber): string
 	{
 		$nepaliMonthNames = ['Baishak', 'Jestha', 'Ashad', 'Shrawn', 'Bhadra', 'Ashwin', 'kartik', 'Mangshir', 'Poush', 'Magh', 'Falgun', 'Chaitra'];
 		return $nepaliMonthNames[$monthNumber - 1];
 	}
 
-	/**
-	 * Check if date range is in english
-	 *
-	 * @param int $yy
-	 * @param int $mm
-	 * @param int $dd
-	 * @return bool
-	 */
-	private function _is_in_range_eng($yy, $mm, $dd)
+	private function isEnglishDateInSupportedRange(int $yy, int $mm, int $dd): bool
 	{
 		if ($yy < 1944 || $yy > 2033) {
 			return 'Supported only between 1944-2033'; // TODO: find a better way to return these to method users
@@ -195,7 +184,7 @@ class NepaliCalendar
 	public function eng_to_nep($yy, $mm, $dd)
 	{
 		// Check for date range
-		$chk = $this->_is_in_range_eng($yy, $mm, $dd);
+		$chk = $this->isEnglishDateInSupportedRange($yy, $mm, $dd);
 
 		if ($chk !== TRUE) {
 			die($chk);
