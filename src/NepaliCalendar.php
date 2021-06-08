@@ -137,7 +137,7 @@ class NepaliCalendar
 	private function _is_in_range_eng($yy, $mm, $dd)
 	{
 		if ($yy < 1944 || $yy > 2033) {
-			return 'Supported only between 1944-2022';
+			return 'Supported only between 1944-2033'; // TODO: find a better way to return these to method users
 		}
 
 		if ($mm < 1 || $mm > 12) {
